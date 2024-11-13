@@ -1,0 +1,24 @@
+services:
+  ad_server:
+    build:
+      context: ./ad
+    container_name: ad_server
+    ports:
+      - "389:389" # LDAP port
+    networks:
+      - dev-network
+
+  # ldap_app:
+  #   build:
+  #     context: ./app
+  #   container_name: ldap_app
+  #   depends_on:
+  #     - ad_server
+  #   ports:
+  #     - "8080:80"
+  #   networks:
+  #     - dev-network
+
+networks:
+  dev-network:
+    driver: bridge
